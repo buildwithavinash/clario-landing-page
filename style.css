@@ -6,6 +6,11 @@
   --color-accent-dark: #3026df;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -69,6 +74,30 @@ button {
   background-color: var(--color-accent-dark);
   color: var(--color-bg);
 }
+
+/* scroll bar */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  z-index: 999;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  width: 0;
+  background-color: var(--color-accent);
+  transition: width 0.1s linear;
+}
+
+
+
+
+
 /* header */
 
 header {
@@ -100,6 +129,11 @@ header {
 
 .nav__links li a {
   color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.nav__links li a:hover {
+  color: var(--color-accent);
 }
 
 .nav__cta {
@@ -602,6 +636,11 @@ header {
     transform: scale(1);
   }
 
+  .pricing__card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
   /* cta */
 
    .cta__title {
@@ -633,3 +672,27 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* cursor */
+
+.cursor__dot {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+  z-index: 999;
+}
+
+
+.cursor__dot.hover {
+  transform: translate(-50%, -50%) scale(1.8);
+}
+
+.cursor__dot.section {
+  background-color: var(--color-section-bg);
+}
+

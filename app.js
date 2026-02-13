@@ -31,3 +31,54 @@ const revealObserver = new IntersectionObserver((entries)=>{
 
 reveals.forEach(el => revealObserver.observe(el));
 
+// cursor
+
+const dot = document.querySelector(".cursor__dot");
+
+window.addEventListener("mousemove", function(e){
+  dot.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+})
+
+
+const hoverTargets = document.querySelectorAll(
+  "button, a, .feature__card, .pricing__card"
+);
+
+hoverTargets.forEach((el) => {
+  el.addEventListener("mouseenter", () => {
+    dot.classList.add("hover");
+  });
+
+  el.addEventListener("mouseleave", () => {
+    dot.classList.remove("hover");
+  });
+});
+
+if ("ontouchstart" in window) {
+  dot.style.display = "none";
+}
+
+
+const section = document.querySelector(".cta");
+
+section.addEventListener("mousemove", (e)=>{
+  dot.classList.add("section")
+})
+
+section.addEventListener("mouseleave", (e)=>{
+  dot.classList.remove("section")
+})
+
+
+// scrollbar 
+
+const progress = document.querySelector(".scroll-progress__bar");
+
+window.addEventListener("scroll", ()=>{
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop/docHeight) * 100;
+
+  progress.style.width = scrollPercent + "%"
+})
